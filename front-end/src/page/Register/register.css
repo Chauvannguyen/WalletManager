@@ -1,0 +1,63 @@
+.body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-container {
+    background: white;
+    border: 1px solid #000;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+}
+
+.register-container input[type="email"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.forgot-password a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container button {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+}

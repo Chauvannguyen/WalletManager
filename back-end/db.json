@@ -29,28 +29,57 @@
       "name": "Nguyễn Thành Vũ",
       "email": "nguyenthanhvu@gmail.cm",
       "password": "123456"
+    },
+    {
+      "id": "b5af",
+      "name": "alo alo",
+      "email": "alo@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "8aed",
+      "name": "sendo",
+      "email": "sendo@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "b0fe",
+      "name": "Nguyễn Thành Vũ",
+      "email": "nguyenthanhvu@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2052",
+      "name": "NguyễnNam",
+      "email": "nguyennam@gmail.com",
+      "password": "123456"
     }
   ],
   "wallets": [
     {
-      "id": "1",
-      "title": "Gia đình",
-      "price": "3.000.000"
-    },
-    {
-      "id": "2",
-      "title": "Gia đình1",
-      "price": "3.000.000"
-    },
-    {
-      "title": "nguyen",
-      "price": 12222,
+      "title": "Nguyễn Vũ",
+      "price": 1000000,
       "id": "3"
     },
     {
       "title": "ví cá nhân của nguyên",
       "price": 10000000,
       "id": "4"
+    },
+    {
+      "id": "9024",
+      "title": "Home1",
+      "price": 100000000
+    },
+    {
+      "id": "dc0f",
+      "title": "Home 2",
+      "price": 50000000
+    },
+    {
+      "title": "Sendo",
+      "price": 80000000,
+      "id": "477c"
     }
   ]
 }

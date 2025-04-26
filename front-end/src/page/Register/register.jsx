@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './register.css';
 
 const Register = () => {
@@ -22,29 +24,32 @@ const Register = () => {
 
         // Kiểm tra các trường rỗng
         if (!form.name || !form.email || !form.password) {
-            alert("Vui lòng nhập đầy đủ thông tin!");
+            toast.warning("Vui lòng nhập đầy đủ thông tin!", { position: "top-center" });
             return;
         }
 
         try {
-            // Gửi yêu cầu đăng ký
             await axios.post('http://localhost:3000/users', form);
-            alert("Đăng ký thành công! Vui lòng đăng nhập.");
-            navigate('/login');
+            toast.success("Đăng ký thành công! Vui lòng đăng nhập.", {
+                position: "top-right",
+                autoClose: 2000,
+                onClose: () => navigate('/login')  // Chuyển trang sau khi toast đóng
+            });
         } catch (error) {
             console.error('Lỗi đăng ký:', error);
-            alert("Đăng ký thất bại.");
+            toast.error("Đăng ký thất bại. Email có thể đã được sử dụng!", {
+                position: "top-right"
+            });
         }
     };
 
     return (
         <Container className="mt-5">
             <Row className="justify-content-center">
-                <Col md={6}>
+                <Col md={6} className="register-container">
                     <h3 className="mb-4">Đăng ký tài khoản</h3>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formName">
-                            <Form.Label>Họ và tên</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Nhập họ và tên"
@@ -55,7 +60,6 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formEmail">
-                            <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="email"
                                 placeholder="Nhập email"
@@ -66,7 +70,6 @@ const Register = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formPassword">
-                            <Form.Label>Mật khẩu</Form.Label>
                             <Form.Control
                                 type="password"
                                 placeholder="Nhập mật khẩu"
@@ -85,6 +88,7 @@ const Register = () => {
                     </Form>
                 </Col>
             </Row>
+            <ToastContainer />
         </Container>
     );
 };

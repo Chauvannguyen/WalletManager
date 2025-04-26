@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Table, Dropdown } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./walletmanager.css";
+import Swal from 'sweetalert2';
+import {NavLink, useNavigate} from "react-router";
+import {API_URL} from "../../api/API";
 
 const WalletManager = () => {
     const navigate = useNavigate();
@@ -23,8 +25,12 @@ const WalletManager = () => {
     useEffect(() => {
         const fetchWallets = async () => {
             try {
+
                 console.log(user);
                 const res = await axios.get('http://localhost:3000/wallets?userId=' + user.id);
+
+                const res = await axios.get(`${API_URL}/wallets`);
+
                 setWallets(res.data);
             } catch (err) {
                 console.error('Lỗi khi fetch wallets:', err);
@@ -44,14 +50,29 @@ const WalletManager = () => {
 
     // Xóa ví
     const handleDelete = async (id) => {
-        if (!window.confirm('Bạn có chắc muốn xóa ví này?')) return;
-        try {
-            await axios.delete(`http://localhost:3000/wallets/${id}`);
-            setWallets(wallets.filter(w => w.id !== id));
-        } catch (err) {
-            console.error('Lỗi khi xóa ví:', err);
+        const result = await Swal.fire({
+            title: 'Bạn có chắc muốn xóa ví này?',
+            text: 'Hành động này không thể hoàn tác!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Hủy'
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`http://localhost:3000/wallets/${id}`);
+                setWallets(wallets.filter(w => w.id !== id));
+                Swal.fire('Đã xóa!', 'Ví đã được xóa thành công.', 'success');
+            } catch (err) {
+                console.error('Lỗi khi xóa ví:', err);
+                Swal.fire('Lỗi!', 'Xóa ví thất bại.', 'error');
+            }
         }
     };
+
 
     return (
         <Container fluid>
@@ -86,9 +107,9 @@ const WalletManager = () => {
                         <tbody>
                         <tr className="bg-primary text-white">
                             <td>
-                                <a href="/wallet" className="text-white text-decoration-none d-block">
+                                <NavLink to="/home" className="text-white text-decoration-none d-block">
                                     Quản lý ví
-                                </a>
+                                </NavLink>
                             </td>
                         </tr>
                         <tr>
@@ -131,10 +152,11 @@ const WalletManager = () => {
                                         variant="secondary"
                                         size="sm"
                                         className="me-2"
-                                        onClick={() => navigate(`/edit/${w.id}`)}
+                                        onClick={() => navigate(`/edit/${w.id}`)}  // Điều hướng đến trang sửa ví
                                     >
                                         Sửa
                                     </Button>
+
                                     <Button
                                         variant="danger"
                                         size="sm"

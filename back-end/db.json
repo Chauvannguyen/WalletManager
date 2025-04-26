@@ -7,6 +7,7 @@
       "password": "123456"
     },
     {
+<<<<<<< HEAD
       "name": "Nhakhanh",
       "email": "khanh1@gmail.com",
       "password": "123445",
@@ -47,6 +48,81 @@
       "price": 1234500,
       "userId": 2,
       "id": "IlwsYyL"
+=======
+      "name": "nguyen",
+      "email": "nguyen23@gmail.com",
+      "password": "12345678",
+      "id": "2"
+    },
+    {
+      "name": "nguyen232",
+      "email": "nguyen232@gmail.com",
+      "password": "12345678",
+      "id": "3"
+    },
+    {
+      "name": "Châu Văn Nguyên",
+      "email": "Nguyencvpd@gmail.com",
+      "password": "10102005",
+      "id": "4"
+    },
+    {
+      "id": "9280",
+      "name": "Nguyễn Thành Vũ",
+      "email": "nguyenthanhvu@gmail.cm",
+      "password": "123456"
+    },
+    {
+      "id": "b5af",
+      "name": "alo alo",
+      "email": "alo@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "8aed",
+      "name": "sendo",
+      "email": "sendo@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "b0fe",
+      "name": "Nguyễn Thành Vũ",
+      "email": "nguyenthanhvu@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2052",
+      "name": "NguyễnNam",
+      "email": "nguyennam@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "wallets": [
+    {
+      "title": "Nguyễn Vũ",
+      "price": 1000000,
+      "id": "3"
+    },
+    {
+      "title": "ví cá nhân của nguyên",
+      "price": 10000000,
+      "id": "4"
+    },
+    {
+      "id": "9024",
+      "title": "Home1",
+      "price": 100000000
+    },
+    {
+      "id": "dc0f",
+      "title": "Home 2",
+      "price": 50000000
+    },
+    {
+      "title": "Sendo",
+      "price": 80000000,
+      "id": "477c"
+>>>>>>> ad452debb655a0af6e3759917b53fb0180b38a56
     }
   ]
 }

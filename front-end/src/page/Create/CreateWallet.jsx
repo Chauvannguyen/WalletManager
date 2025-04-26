@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -10,12 +10,23 @@ const Create = () => {
     const [message, setMessage] = useState('');
     const [variant, setVariant] = useState(''); // 'success' hoặc 'danger'
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const stored = localStorage.getItem('user');
+        if (stored) {
+            setUser(JSON.parse(stored));
+        } else {
+            navigate('/login');
+        }
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!title || !price) {
             setVariant('danger');
             setMessage('Vui lòng nhập đầy đủ thông tin!');
+
             return;
         }
 
@@ -23,15 +34,13 @@ const Create = () => {
             await axios.post('http://localhost:3000/wallets', {
                 title,
                 price: parseFloat(price),
+                userId: user.id
             });
 
-            // Hiện thông báo
             setVariant('success');
             setMessage('Tạo ví thành công! Đang chuyển về trang chủ...');
-            // Reset form
             setTitle('');
             setPrice('');
-            // Sau 2s, điều hướng về /wallet
             setTimeout(() => {
                 navigate('/home');
             }, 2000);

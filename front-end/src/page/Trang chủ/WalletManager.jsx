@@ -23,14 +23,18 @@ const WalletManager = () => {
     useEffect(() => {
         const fetchWallets = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/wallets');
+                console.log(user);
+                const res = await axios.get('http://localhost:3000/wallets?userId=' + user.id);
                 setWallets(res.data);
             } catch (err) {
                 console.error('Lỗi khi fetch wallets:', err);
             }
         };
-        fetchWallets();
-    }, []);
+        if(user){
+            fetchWallets();
+        }
+
+    }, [user]);
 
     // Đăng xuất
     const handleLogout = () => {

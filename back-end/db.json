@@ -1,56 +1,52 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Chau Van Nguyen",
       "email": "nguyen@gmail.com",
       "password": "123456"
     },
     {
-      "name": "nguyen",
-      "email": "nguyen23@gmail.com",
-      "password": "12345678",
-      "id": "2"
-    },
-    {
-      "name": "nguyen232",
-      "email": "nguyen232@gmail.com",
-      "password": "12345678",
-      "id": "3"
-    },
-    {
-      "name": "Châu Văn Nguyên",
-      "email": "Nguyencvpd@gmail.com",
-      "password": "10102005",
-      "id": "4"
-    },
-    {
-      "id": "9280",
-      "name": "Nguyễn Thành Vũ",
-      "email": "nguyenthanhvu@gmail.cm",
-      "password": "123456"
+      "name": "Nhakhanh",
+      "email": "khanh1@gmail.com",
+      "password": "123445",
+      "id": 2
     }
   ],
   "wallets": [
     {
       "id": "1",
-      "title": "Gia đình",
-      "price": "3.000.000"
-    },
-    {
-      "id": "2",
       "title": "Gia đình1",
-      "price": "3.000.000"
+      "price": 3000000,
+      "userId": 1
     },
     {
-      "title": "nguyen",
-      "price": 12222,
-      "id": "3"
+      "title": "di choi",
+      "price": 5000000,
+      "id": "YwtTMX_",
+      "userId": 2
     },
     {
       "title": "ví cá nhân của nguyên",
-      "price": 10000000,
-      "id": "4"
+      "price": 222222,
+      "id": "Q1rJOY_",
+      "userId": 1
+    },
+    {
+      "title": "ví cá nhân của nguyên",
+      "price": 12,
+      "id": "k__Nxhp"
+    },
+    {
+      "title": "ví cá nhân của nguyên23",
+      "price": 12000000,
+      "id": "T8VtZrw"
+    },
+    {
+      "title": "di choi",
+      "price": 1234500,
+      "userId": 2,
+      "id": "IlwsYyL"
     }
   ]
 }

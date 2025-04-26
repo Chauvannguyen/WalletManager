@@ -29,7 +29,7 @@ const WalletManager = () => {
                 console.log(user);
                 const res = await axios.get('http://localhost:3000/wallets?userId=' + user.id);
 
-                const res = await axios.get(`${API_URL}/wallets`);
+                // const res = await axios.get(`${API_URL}/wallets`);
 
                 setWallets(res.data);
             } catch (err) {

@@ -4,64 +4,65 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const EditWallet = () => {
-    const { id } = useParams();  // Lấy id ví từ URL
-    const [wallet, setWallet] = useState({ title: '', price: '' });
+    const { id } = useParams(); // ID ví
+    const [wallet, setWallet] = useState({ title: '', price: '', userId: null });
     const [message, setMessage] = useState('');
-    const [variant, setVariant] = useState(''); // 'success' hoặc 'danger'
+    const [variant, setVariant] = useState('');
     const navigate = useNavigate();
 
-    // Fetch ví hiện tại để chỉnh sửa
+    // Load thông tin ví
     useEffect(() => {
         const fetchWallet = async () => {
             try {
                 const res = await axios.get(`http://localhost:3000/wallets/${id}`);
-                // Kiểm tra nếu ví không tồn tại
-                if (!res.data) {
+                if (res.data) {
+                    setWallet({
+                        title: res.data.title,
+                        price: res.data.price.toString(),
+                        userId: res.data.userId // giữ lại userId khi cập nhật
+                    });
+                } else {
                     setVariant('danger');
                     setMessage('Không tìm thấy ví.');
-                    return;
                 }
-                // Đảm bảo giá trị price là số
-                setWallet({
-                    title: res.data.title,
-                    price: res.data.price.toString() // Chuyển price thành chuỗi để dễ chỉnh sửa trong input
-                });
-            } catch (err) {
-                console.error('Lỗi khi tải dữ liệu ví:', err);
+            } catch (error) {
+                console.error('Lỗi khi lấy ví:', error);
                 setVariant('danger');
                 setMessage('Không tìm thấy ví.');
             }
         };
+
         fetchWallet();
     }, [id]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setWallet({ ...wallet, [name]: value });
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!wallet.title || !wallet.price) {
+        if (!wallet.title.trim() || !wallet.price.trim()) {
             setVariant('danger');
             setMessage('Vui lòng nhập đầy đủ thông tin!');
             return;
         }
 
         try {
-            // Gửi yêu cầu cập nhật ví
             await axios.put(`http://localhost:3000/wallets/${id}`, {
-                title: wallet.title,
-                price: parseFloat(wallet.price), // Đảm bảo giá trị price là số thực
+                title: wallet.title.trim(),
+                price: parseFloat(wallet.price),
+                userId: wallet.userId // giữ lại userId khi cập nhật
             });
 
-            // Hiện thông báo
             setVariant('success');
             setMessage('Cập nhật ví thành công!');
-
-            setTimeout(() => {
-                navigate('/home');
-            }, 1000);
-        } catch (err) {
-            console.error(err);
+            setTimeout(() => navigate('/home'), 1000);
+        } catch (error) {
+            console.error('Lỗi khi cập nhật ví:', error);
             setVariant('danger');
-            setMessage('Cập nhật ví thất bại! Vui lòng thử lại.');
+            setMessage('Cập nhật thất bại!');
         }
     };
 
@@ -69,35 +70,33 @@ const EditWallet = () => {
         <Container className="mt-5">
             <Row className="justify-content-center">
                 <Col md={6}>
-                    <h3 className="mb-4">Sửa ví</h3>
+                    <h3 className="mb-4">Chỉnh sửa ví</h3>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formTitle">
                             <Form.Label>Tên ví</Form.Label>
                             <Form.Control
                                 type="text"
+                                name="title"
                                 placeholder="Nhập tên ví"
                                 value={wallet.title}
-                                onChange={(e) => setWallet({ ...wallet, title: e.target.value })}
+                                onChange={handleChange}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formPrice">
-                            <Form.Label>Số tiền hiện có</Form.Label>
+                            <Form.Label>Số tiền</Form.Label>
                             <Form.Control
                                 type="number"
+                                name="price"
                                 placeholder="Nhập số tiền"
                                 value={wallet.price}
-                                onChange={(e) => setWallet({ ...wallet, price: e.target.value })}
+                                onChange={handleChange}
+                                min="0"
                             />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Cập nhật ví
+                            Cập nhật
                         </Button>
-                        <Button
-                            variant="secondary"
-                            className="ms-2"
-                            onClick={() => navigate('/home')}
-                            type="button"
-                        >
+                        <Button variant="secondary" className="ms-2" onClick={() => navigate('/home')}>
                             Hủy
                         </Button>
                     </Form>

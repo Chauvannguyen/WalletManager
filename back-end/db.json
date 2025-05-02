@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Chau Van Nguyen",
       "email": "nguyen@gmail.com",
       "password": "123456"
@@ -10,7 +10,7 @@
       "name": "Nhakhanh",
       "email": "khanh1@gmail.com",
       "password": "123445",
-      "id": 2
+      "id": "2"
     }
   ],
   "wallets": [
@@ -18,19 +18,19 @@
       "title": "ví cá nhân của nguyên",
       "price": 12322,
       "userId": 1,
-      "id": 1
+      "id": "1"
     },
     {
       "title": "Gia đình",
       "price": 1111,
       "userId": 1,
-      "id": 2
+      "id": "2"
     },
     {
       "title": "di choi",
       "price": 111,
       "userId": 2,
-      "id": 3
+      "id": "3"
     }
   ]
 }

@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Header from "../../components/layout/Header.jsx";
-import Footer from "../../components/layout/Footer.jsx";
-
-
 
 const EditWallet = () => {
     const { id } = useParams(); // ID ví
@@ -14,6 +10,7 @@ const EditWallet = () => {
     const [variant, setVariant] = useState('');
     const navigate = useNavigate();
 
+    // Load thông tin ví
     useEffect(() => {
         const fetchWallet = async () => {
             try {
@@ -22,7 +19,7 @@ const EditWallet = () => {
                     setWallet({
                         title: res.data.title,
                         price: res.data.price.toString(),
-                        userId: res.data.userId
+                        userId: res.data.userId // giữ lại userId khi cập nhật
                     });
                 } else {
                     setVariant('danger');
@@ -56,7 +53,7 @@ const EditWallet = () => {
             await axios.put(`http://localhost:3000/wallets/${id}`, {
                 title: wallet.title.trim(),
                 price: parseFloat(wallet.price),
-                userId: wallet.userId
+                userId: wallet.userId // giữ lại userId khi cập nhật
             });
 
             setVariant('success');
@@ -70,59 +67,48 @@ const EditWallet = () => {
     };
 
     return (
-        <div className="d-flex flex-column min-vh-100">
-            <Header />
+        <Container className="mt-5">
+            <Row className="justify-content-center">
+                <Col md={6}>
+                    <h3 className="mb-4">Chỉnh sửa ví</h3>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formTitle">
+                            <Form.Label>Tên ví</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="title"
+                                placeholder="Nhập tên ví"
+                                value={wallet.title}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formPrice">
+                            <Form.Label>Số tiền</Form.Label>
+                            <Form.Control
+                                type="number"
+                                name="price"
+                                placeholder="Nhập số tiền"
+                                value={wallet.price}
+                                onChange={handleChange}
+                                min="0"
+                            />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Cập nhật
+                        </Button>
+                        <Button variant="secondary" className="ms-2" onClick={() => navigate('/home')}>
+                            Hủy
+                        </Button>
+                    </Form>
 
-            <Container className="flex-grow-1 py-5">
-                <Row className="justify-content-center">
-                    <Col md={6}>
-                        <h3 className="mb-4">Chỉnh sửa ví</h3>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formTitle">
-                                <Form.Label>Tên ví</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="title"
-                                    placeholder="Nhập tên ví"
-                                    value={wallet.title}
-                                    onChange={handleChange}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formPrice">
-                                <Form.Label>Số tiền</Form.Label>
-                                <Form.Control
-                                    type="number"
-                                    name="price"
-                                    placeholder="Nhập số tiền"
-                                    value={wallet.price}
-                                    onChange={handleChange}
-                                    min="0"
-                                />
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Cập nhật
-                            </Button>
-                            <Button
-                                variant="secondary"
-                                className="ms-2"
-                                onClick={() => navigate('/home')}
-                                type="button"
-                            >
-                                Hủy
-                            </Button>
-                        </Form>
-
-                        {message && (
-                            <Alert className="mt-3" variant={variant}>
-                                {message}
-                            </Alert>
-                        )}
-                    </Col>
-                </Row>
-            </Container>
-
-            <Footer />
-        </div>
+                    {message && (
+                        <Alert className="mt-3" variant={variant}>
+                            {message}
+                        </Alert>
+                    )}
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

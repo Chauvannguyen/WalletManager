@@ -1,36 +1,26 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Chau Van Nguyen",
-      "email": "nguyen@gmail.com",
-      "password": "123456"
-    },
-    {
-      "name": "Nhakhanh",
-      "email": "khanh1@gmail.com",
-      "password": "123445",
-      "id": 2
+      "name": "nguyen12",
+      "email": "khanh112@gmail.com",
+      "password": "123",
+      "avatar": "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/494693255_1981645559308716_8497728216663010515_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=AMreGfLbbcsQ7kNvwGoUO2S&_nc_oc=Adn-lc_bwAaW5zuR1t-_jhfYykFXPOeFITDF9iJ7NFq4aifxpdw4_ieZyVPohAbMKtA&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=QbF3ZdiRPiC7jZ2tFyVTZw&oh=00_AfGziCZAluEFoztllP62Ixmp9oGcQHa7quiGnDhjf11vHQ&oe=681D8156",
+      "phone": "039962987344",
+      "id": 1
     }
   ],
   "wallets": [
     {
       "title": "ví cá nhân của nguyên",
-      "price": 12322,
+      "price": 123,
       "userId": 1,
       "id": 1
     },
     {
       "title": "Gia đình",
-      "price": 1111,
+      "price": 12,
       "userId": 1,
       "id": 2
-    },
-    {
-      "title": "di choi",
-      "price": 111,
-      "userId": 2,
-      "id": 3
     }
   ]
 }

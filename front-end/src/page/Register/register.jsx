@@ -10,7 +10,9 @@ const Register = () => {
     const [form, setForm] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
+        avatar: '',
+        phone: ''
     });
 
     const navigate = useNavigate();
@@ -23,7 +25,7 @@ const Register = () => {
         e.preventDefault();
 
         // Kiểm tra các trường rỗng
-        if (!form.name || !form.email || !form.password) {
+        if (!form.name || !form.email || !form.password || !form.avatar || !form.phone) {
             toast.warning("Vui lòng nhập đầy đủ thông tin!", { position: "top-center" });
             return;
         }
@@ -79,10 +81,31 @@ const Register = () => {
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Form.Group className="mb-3" controlId="formAvatar">
+                            <Form.Control
+                                type="text"
+                                placeholder="Link ảnh đại diện (avatar)"
+                                name="avatar"
+                                value={form.avatar}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formPhone">
+                            <Form.Control
+                                type="tel"
+                                placeholder="Nhập số điện thoại"
+                                name="phone"
+                                value={form.phone}
+                                onChange={handleChange}
+                            />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit" className="w-100">
                             Đăng ký
                         </Button>
-                        <div className="login-link">
+
+                        <div className="login-link mt-3 text-center">
                             Nếu đã có tài khoản? <a href="../Login">Đăng nhập</a>
                         </div>
                     </Form>

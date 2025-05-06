@@ -27,7 +27,11 @@ function App() {
                 <Route path="/ProfileDetall" element={<ProfileDetall/>}/>
                 <Route path="/changepassword" element={<ChangePassword />} />
                 <Route path="/delete-account" element={<DeleteAccount />} />
-                <Route path="/showWallet" element={<ShowWallet />} />
+                {/*<Route path="/showWallet" element={<ShowWallet />} />*/}
+                <Route path="/showWallet/:id" element={<ShowWallet />} />
+
+
+
             </Routes>
         </>
     );

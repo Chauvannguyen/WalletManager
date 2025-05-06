@@ -6,21 +6,37 @@
       "password": "123",
       "avatar": "https://scontent.fdad3-1.fna.fbcdn.net/v/t39.30808-6/494693255_1981645559308716_8497728216663010515_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=AMreGfLbbcsQ7kNvwGoUO2S&_nc_oc=Adn-lc_bwAaW5zuR1t-_jhfYykFXPOeFITDF9iJ7NFq4aifxpdw4_ieZyVPohAbMKtA&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&_nc_gid=QbF3ZdiRPiC7jZ2tFyVTZw&oh=00_AfGziCZAluEFoztllP62Ixmp9oGcQHa7quiGnDhjf11vHQ&oe=681D8156",
       "phone": "039962987344",
-      "id": 1
+      "id": "1"
     }
   ],
   "wallets": [
     {
       "title": "ví cá nhân của nguyên",
-      "price": 123,
+      "price": 1150000,
       "userId": 1,
-      "id": 1
+      "id": "1"
     },
     {
       "title": "Gia đình",
       "price": 12,
       "userId": 1,
-      "id": 2
+      "id": "2"
+    }
+  ],
+  "expenses": [
+    {
+      "name": "Mua đồ ăn",
+      "amount": 100000,
+      "date": "2025-05-05",
+      "walletId": "1",
+      "id": "1"
+    },
+    {
+      "walletId": "2",
+      "name": "Đi chợ",
+      "amount": 20000,
+      "date": "2025-05-05",
+      "id": "2"
     }
   ]
 }

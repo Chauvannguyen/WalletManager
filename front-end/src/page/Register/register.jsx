@@ -25,7 +25,7 @@ const Register = () => {
         e.preventDefault();
 
         // Kiểm tra các trường rỗng
-        if (!form.name || !form.email || !form.password || !form.avatar || !form.phone) {
+        if ( !form.email || !form.password) {
             toast.warning("Vui lòng nhập đầy đủ thông tin!", { position: "top-center" });
             return;
         }
@@ -56,7 +56,7 @@ const Register = () => {
                                 type="text"
                                 placeholder="Nhập họ và tên"
                                 name="name"
-                                value={form.name}
+                                value={''}
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -86,7 +86,7 @@ const Register = () => {
                                 type="text"
                                 placeholder="Link ảnh đại diện (avatar)"
                                 name="avatar"
-                                value={form.avatar}
+                                value={''}
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -96,7 +96,7 @@ const Register = () => {
                                 type="tel"
                                 placeholder="Nhập số điện thoại"
                                 name="phone"
-                                value={form.phone}
+                                value={''}
                                 onChange={handleChange}
                             />
                         </Form.Group>
@@ -104,6 +104,7 @@ const Register = () => {
                         <Button variant="primary" type="submit" className="w-100">
                             Đăng ký
                         </Button>
+
 
                         <div className="login-link mt-3 text-center">
                             Nếu đã có tài khoản? <a href="../Login">Đăng nhập</a>

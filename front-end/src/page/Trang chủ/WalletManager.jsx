@@ -5,12 +5,14 @@ import "./walletmanager.css";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../../api/API';
+import deleteAccount from "../DeleteAccount/DeleteAccount.jsx";
 
 
 const WalletManager = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [wallets, setWallets] = useState([]);
+    const currentUser = JSON.parse(localStorage.getItem('user'));
 
     // Lấy thông tin user từ localStorage
     useEffect(() => {
@@ -72,12 +74,21 @@ const WalletManager = () => {
         }
     };
 
+    const handleClickDeleteAccount = () => {
+        deleteAccount(currentUser, navigate);
+    };
+
     return (
         <Container fluid>
             {/* Header */}
             <Row className="bg-dark p-3 text-white align-items-center border-bottom">
                 <Col>
-                    <strong>Logo</strong>
+                    <img
+                        src="/image/lo.jpg"
+                        alt="Logo"
+                        className="rounded-circle"
+                        style={{ height: '60px', width: '60px', objectFit: 'cover' }}
+                    />
                 </Col>
                 <Col className="text-end d-flex justify-content-end align-items-center gap-2">
                     <img
@@ -94,7 +105,7 @@ const WalletManager = () => {
                         <Dropdown.Menu>
                             <Dropdown.Item onClick={handleProfileDetall}>Thông tin cá nhân</Dropdown.Item>
                             <Dropdown.Item onClick={() => navigate('/changepassword')}>Đổi mật khẩu</Dropdown.Item>
-                            <Dropdown.Item onClick={() => navigate('/delete-account')}>Xóa tài khoản</Dropdown.Item>
+                            <Dropdown.Item onClick={handleClickDeleteAccount}>Xóa tài khoản</Dropdown.Item>
                             <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

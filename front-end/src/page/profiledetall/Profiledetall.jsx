@@ -128,6 +128,9 @@ const ProfileDetail = () => {
                             <Button variant="primary" type="submit" className="w-100">
                                 Lưu thay đổi
                             </Button>
+                            <Button variant="success" className="w-100 mt-3" onClick={() => navigate('/home')} >
+                                Quay lại
+                            </Button>
                         </Form>
                     </Card>
                 </Col>
